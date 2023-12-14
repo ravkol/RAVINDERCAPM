@@ -1,35 +1,39 @@
 {
-  "name": "ravindercapm",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
-  "license": "UNLICENSED",
-  "engines": {
-    "node": "^12.18.0 || ^14.0.0 || ^16.0.0 || ^18.0.0"
-  },
-  "private": true,
-  "dependencies": {
-    "@sap/cds": "^7",
-    "@sap/cds-hana": "^2",
-    "@sap/xssec": "^3",
-    "express": "^4",
-    "passport": "^0.7.0"
-  },
-  "devDependencies": {
-    "@sap/cds-dk": "^7",
-    "@sap/ux-specification": "^1.120.1"
-  },
-  "scripts": {
-    "start": "cds-serve",
-    "watch-salesordermodule": "cds watch --open salesordermodule/webapp/index.html?sap-ui-xx-viewCache=false"
-  },
-  "sapux": [
-    "app/salesordermodule"
-  ],
-  "cds": {
-    "requires": {
-      "db": "hana",
-      "auth": "xsuaa"
+    "name": "ravindercapm",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "engines": {
+        "node": "^12.18.0 || ^14.0.0 || ^16.0.0 || ^18.0.0"
+    },
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^7",
+        "@sap/cds-hana": "^2",
+        "@sap/xssec": "^3",
+        "express": "^4",
+        "passport": "^0.7.0"
+    },
+    "devDependencies": {
+        "@sap/cds-dk": "^7",
+        "@sap/ux-specification": "^1.120.1",
+        "rimraf": "^3.0.2"
+    },
+    "scripts": {
+        "start": "cds-serve",
+        "watch-salesordermodule": "cds watch --open salesordermodule/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy ravindercapm --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    },
+    "sapux": [
+        "app/salesordermodule"
+    ],
+    "cds": {
+        "requires": {
+            "db": "hana",
+            "auth": "xsuaa"
+        }
     }
-  }
 }
