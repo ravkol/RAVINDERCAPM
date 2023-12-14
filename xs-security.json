@@ -1,0 +1,31 @@
+{
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.SalesAdmin",
+      "description": "SalesAdmin"
+    },
+    {
+      "name": "$XSAPPNAME.SalesViewer",
+      "description": "SalesViewer"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "SalesAdmin",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.SalesAdmin"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "SalesViewer",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.SalesViewer"
+      ],
+      "attribute-references": []
+    }
+  ]
+}

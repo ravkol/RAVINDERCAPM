@@ -6,5 +6,6 @@
             "name": "mysqlaccess",
             "database": "${workspaceFolder:ravindercapm}/rksqlite.db"
         }
-    ]
+    ],
+    "SAP HANA Project Explorer.bind.confirm automatic undeployment": false
 }

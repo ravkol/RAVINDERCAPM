@@ -4,13 +4,20 @@
   "description": "A simple CAP project.",
   "repository": "<Add your repository here>",
   "license": "UNLICENSED",
+  "engines": {
+    "node": "^12.18.0 || ^14.0.0 || ^16.0.0 || ^18.0.0"
+  },
   "private": true,
   "dependencies": {
     "@sap/cds": "^7",
-    "express": "^4"
+    "@sap/cds-hana": "^2",
+    "@sap/xssec": "^3",
+    "express": "^4",
+    "passport": "^0"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
     "@sap/ux-specification": "^1.120.1"
   },
   "scripts": {
@@ -19,5 +26,11 @@
   },
   "sapux": [
     "app/salesordermodule"
-  ]
+  ],
+  "cds": {
+    "requires": {
+      "db": "hana",
+      "auth": "xsuaa"
+    }
+  }
 }
