@@ -48,6 +48,16 @@ modules:
     - npm install
     - npm run build:cf
     supported-platforms: []
+- name: ravindercapm1-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: ravindercapm-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires: []
 resources:
 - name: ravindercapm-db
   type: com.sap.xs.hdi-container
@@ -70,6 +80,30 @@ resources:
     service-name: ravindercapm-html5-srv
     service-plan: app-host
 - name: ravindercapm-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: ravindercapm-destination-service
+    service-plan: lite
+- name: ravindercapm-repo1-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: ravindercapm-html5-srv
+    service-plan: app-host
+- name: ravindercapm-destination1-service
   type: org.cloudfoundry.managed-service
   parameters:
     config:
