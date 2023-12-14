@@ -1,0 +1,13 @@
+GET http://localhost:4004/sap/opu/Odata/SAP/API_SALES_ORDER/OrderSet
+
+###
+POST http://localhost:4004/sap/opu/Odata/SAP/API_SALES_ORDER/OrderSet
+Content-Type: application/json
+
+    {
+      "orderid": 6999,
+      "customername": "Kolipaka",
+      "contactperson": "Ravinder",
+      "grossamount": 8099,
+      "currency": "USD"
+    }
